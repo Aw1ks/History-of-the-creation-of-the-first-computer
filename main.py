@@ -3,10 +3,11 @@ from gtts import gTTS
 
 
 def get_pdf_text(pdf_file_path):
+    pages_text = ''
     with pdfplumber.open(pdf_file_path) as pdf:
         pages_text = ''.join([page.extract_text() for page in pdf.pages])
         pages_text_cleaned = pages_text.replace("\n", "")
-        return pages_text_cleaned
+    return pages_text_cleaned
 
 
 def create_pdf_audio(pdf_text, language='ru', output_file='output.mp3'):
